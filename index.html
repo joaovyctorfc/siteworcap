@@ -32,7 +32,7 @@
             width: 100%;
             height: 200%; /* Dobro da altura para animação contínua */
             z-index: 1;
-            transition: transform 0.8s cubic-bezier(0.6, 0.04, 0.98, 0.335); /* TEMPO DE TRANSIÇÃO REDUZIDO */
+            transition: transform 0.4s cubic-bezier(0.6, 0.04, 0.98, 0.335); /* TEMPO DE TRANSIÇÃO REDUZIDO */
         }
         
         /* Efeito de Hyperspace */
@@ -49,7 +49,7 @@
         }
 
         #stars, #stars2, #stars3 {
-            transition: transform 0.8s cubic-bezier(0.6, 0.04, 0.98, 0.335); /* TEMPO DE TRANSIÇÃO REDUZIDO */
+            transition: transform 0.4s cubic-bezier(0.6, 0.04, 0.98, 0.335); /* TEMPO DE TRANSIÇÃO REDUZIDO */
         }
 
         /* Efeito de esticar as estrelas */
@@ -306,7 +306,7 @@
             <p>> STATUS DO SISTEMA: <span class="status-ok">PRONTO</span></p>
         </div>
         
-        <img src="logo01.jpg" alt="Logo Worcap" class="logo-main" onerror="this.onerror=null;this.src='https://placehold.co/600x200/png?text=WORCAP';">
+        <img src="logo01.png" alt="Logo Worcap" class="logo-main" onerror="this.onerror=null;this.src='https://placehold.co/600x200/png?text=WORCAP';">
         
         <div id="countdown"></div>
         <button id="launch-button">INICIAR LANÇAMENTO</button>
@@ -324,7 +324,7 @@
             <p>> SINAL: ESTÁVEL</p>
             <p>> STATUS: <span class="status-ok">INSCRIÇÕES ABERTAS</span></p>
         </div>
-        <img src="logo02.jpg" alt="Logo Worcap 25 Anos" class="logo-final" onerror="this.onerror=null;this.src='https://placehold.co/250x250/png?text=WORCAP+25';">
+        <img src="logo02.png" alt="Logo Worcap 25 Anos" class="logo-final" onerror="this.onerror=null;this.src='https://placehold.co/250x250/png?text=WORCAP+25';">
         <h1>INSCRIÇÕES ABERTAS</h1>
     </section>
 
@@ -389,7 +389,7 @@
                         starsContainer.classList.remove('hyperspace');
                     }, 400); // TEMPO REDUZIDO
 
-                }, 600); // TEMPO REDUZIDO (Ocorre no meio do salto para o hyperspace)
+                }, 500); // TEMPO REDUZIDO (Ocorre no meio do salto para o hyperspace)
             }
         });
     </script>
