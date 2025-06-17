@@ -1,0 +1,398 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Worcap - Lançamento</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Teko:wght@700&family=Roboto+Mono:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        /* --- Configurações Globais e de Fonte --- */
+        body, html {
+            margin: 0;
+            padding: 0;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            font-family: 'Roboto Mono', monospace;
+            background-color: #040811;
+        }
+
+        /* --- Fundo de Estrelas Animado --- */
+        @keyframes move-stars {
+            from { transform: translateY(0px); }
+            to { transform: translateY(-2000px); }
+        }
+
+        #stars-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 200%; /* Dobro da altura para animação contínua */
+            z-index: 1;
+            transition: transform 0.8s cubic-bezier(0.6, 0.04, 0.98, 0.335); /* TEMPO DE TRANSIÇÃO REDUZIDO */
+        }
+        
+        /* Efeito de Hyperspace */
+        #stars-container.hyperspace {
+            transform: scale(5); 
+        }
+
+        .stars {
+            width: 100%;
+            height: 100%;
+            position: absolute;
+            top: 0;
+            left: 0;
+        }
+
+        #stars, #stars2, #stars3 {
+            transition: transform 0.8s cubic-bezier(0.6, 0.04, 0.98, 0.335); /* TEMPO DE TRANSIÇÃO REDUZIDO */
+        }
+
+        /* Efeito de esticar as estrelas */
+        .hyperspace #stars {
+            transform: scaleX(400); 
+            filter: blur(2px);
+        }
+        .hyperspace #stars2 {
+            transform: scaleX(250); 
+            filter: blur(2px);
+        }
+        .hyperspace #stars3 {
+            transform: scaleX(150); 
+            filter: blur(2px);
+        }
+
+        /* MAIS ESTRELAS ADICIONADAS */
+        #stars {
+            width: 1px;
+            height: 1px;
+            background: transparent;
+            box-shadow: 799px 1083px #FFF, 1756px 1735px #FFF, 736px 1782px #FFF, 1259px 1131px #FFF, 881px 1978px #FFF, 959px 1806px #FFF, 1827px 1845px #FFF, 381px 1863px #FFF, 999px 1192px #FFF, 1993px 1324px #FFF, 1889px 1473px #FFF, 824px 1152px #FFF, 110px 1729px #FFF, 1852px 1485px #FFF, 171px 1489px #FFF, 1131px 1404px #FFF, 290px 1583px #FFF, 1695px 1494px #FFF, 1836px 963px #FFF, 1113px 446px #FFF, 1335px 432px #FFF, 619px 728px #FFF, 1284px 338px #FFF, 501px 190px #FFF, 1837px 461px #FFF, 1622px 556px #FFF, 1404px 490px #FFF, 1944px 525px #FFF, 1024px 127px #FFF, 333px 406px #FFF, 1512px 111px #FFF, 173px 317px #FFF, 219px 85px #FFF, 1153px 25px #FFF, 272px 601px #FFF, 1303px 839px #FFF, 34px 921px #FFF, 755px 947px #FFF, 814px 673px #FFF, 10px 10px #FFF, 560px 345px #FFF, 1200px 800px #FFF, 1500px 200px #FFF, 400px 1300px #FFF, 1980px 950px #FFF, 780px 500px #FFF, 250px 1600px #FFF, 1430px 1800px #FFF, 920px 200px #FFF, 1700px 650px #FFF, 1345px 1100px #FFF, 600px 1950px #FFF, 830px 1500px #FFF, 300px 700px #FFF, 1600px 1200px #FFF, 450px 150px #FFF, 980px 450px #FFF, 1800px 1000px #FFF, 20px 1900px #FFF, 1100px 1700px #FFF, 1300px 200px #FFF, 888px 888px #FFF, 123px 456px #FFF, 1452px 234px #FFF, 890px 1234px #FFF, 345px 1890px #FFF, 1987px 34px #FFF, 567px 890px #FFF, 1123px 1567px #FFF, 1789px 567px #FFF, 901px 1901px #FFF, 42px 1984px #FFF, 1388px 1823px #FFF, 1923px 101px #FFF, 843px 299px #FFF, 172px 1088px #FFF, 1629px 112px #FFF, 108px 651px #FFF, 856px 37px #FFF, 451px 827px #FFF, 1317px 1935px #FFF, 583px 1629px #FFF, 50px 1374px #FFF, 1481px 1555px #FFF, 1008px 1603px #FFF, 114px 125px #FFF, 1701px 717px #FFF, 1361px 871px #FFF, 905px 744px #FFF;
+            animation: move-stars 200s linear infinite;
+        }
+
+        #stars2 {
+            width: 2px;
+            height: 2px;
+            background: transparent;
+            box-shadow: 921px 1500px #FFF, 1530px 1058px #FFF, 154px 1799px #FFF, 1318px 1282px #FFF, 477px 1121px #FFF, 1046px 1024px #FFF, 909px 1714px #FFF, 158px 1184px #FFF, 26px 877px #FFF, 1600px 383px #FFF, 90px 480px #FFF, 1110px 139px #FFF, 1834px 131px #FFF, 1831px 648px #FFF, 1022px 838px #FFF, 1018px 804px #FFF, 137px 995px #FFF, 1550px 722px #FFF, 123px 234px #FFF, 812px 1400px #FFF, 1900px 1100px #FFF, 340px 980px #FFF, 1450px 500px #FFF, 670px 80px #FFF, 1750px 1600px #FFF, 950px 550px #FFF, 1999px 50px #FFF, 666px 666px #FFF, 333px 1333px #FFF, 1777px 222px #FFF, 850px 1850px #FFF, 420px 420px #FFF, 1880px 1880px #FFF, 1321px 678px #FFF, 246px 1680px #FFF, 1680px 1246px #FFF, 23px 1234px #FFF, 1432px 456px #FFF, 1801px 1789px #FFF, 893px 123px #FFF, 567px 1890px #FFF;
+            animation: move-stars 100s linear infinite;
+        }
+
+        #stars3 {
+            width: 3px;
+            height: 3px;
+            background: transparent;
+            box-shadow: 1711px 1572px #FFF, 102px 1444px #FFF, 1641px 1902px #FFF, 1269px 965px #FFF, 1352px 1535px #FFF, 401px 1860px #FFF, 1630px 159px #FFF, 209px 691px #FFF, 179px 644px #FFF, 1845px 939px #FFF, 788px 432px #FFF, 1400px 1300px #FFF, 250px 1950px #FFF, 1900px 300px #FFF, 500px 800px #FFF, 912px 99px #FFF, 1500px 1600px #FFF, 77px 777px #FFF, 1920px 1080px #FFF, 555px 1555px #FFF, 1234px 567px #FFF, 489px 234px #FFF, 1001px 1888px #FFF, 1699px 88px #FFF;
+            animation: move-stars 50s linear infinite;
+        }
+
+        /* --- Estilo das Telas --- */
+        .screen {
+            width: 100%;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            position: absolute;
+            top: 0;
+            left: 0;
+            background: transparent;
+            z-index: 2;
+        }
+
+        /* --- INTERFACE HUD --- */
+        .hud-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 15;
+            --hud-color: #3399ff;
+            transition: opacity 0.5s ease-out;
+        }
+        .hud-overlay::before, .hud-overlay::after {
+            content: '';
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            background: linear-gradient(to bottom, rgba(7, 15, 29, 0) 98%, rgba(7, 15, 29, 0.7)),
+                        repeating-linear-gradient(to bottom, transparent, transparent 1px, rgba(var(--hud-color-rgb, 51, 153, 255), 0.05) 1px, rgba(var(--hud-color-rgb, 51, 153, 255), 0.05) 2px);
+            animation: scanline 20s linear infinite;
+        }
+        .hud-corner {
+            position: absolute;
+            width: 40px;
+            height: 40px;
+            border: 3px solid var(--hud-color);
+        }
+        .top-left { top: 20px; left: 20px; border-right: none; border-bottom: none; }
+        .top-right { top: 20px; right: 20px; border-left: none; border-bottom: none; }
+        .bottom-left { bottom: 20px; left: 20px; border-right: none; border-top: none; }
+        .bottom-right { bottom: 20px; right: 20px; border-left: none; border-top: none; }
+
+        .hidden {
+            opacity: 0;
+            visibility: hidden;
+            pointer-events: none;
+        }
+
+        #launch-screen {
+            justify-content: center;
+            transition: opacity 0.5s ease-out;
+        }
+        
+        .status-panel {
+            position: absolute; top: 80px; left: 30px; color: #f39c12; z-index: 16; font-size: 14px; text-shadow: 0 0 5px #f39c12;
+            transition: opacity 0.5s ease-out;
+        }
+        .status-panel p { margin: 5px 0; white-space: nowrap; overflow: hidden; width: 0; animation: typing 2s steps(40, end) forwards; }
+        .status-panel p:nth-child(2) { animation-delay: 1s; }
+        .status-panel p:nth-child(3) { animation-delay: 2s; }
+        .status-panel .status-ok { color: #2ecc71; text-shadow: 0 0 5px #2ecc71; }
+
+        .logo-main {
+            width: 350px;
+            max-width: 80%;
+            margin-bottom: 40px;
+            z-index: 10;
+            transition: opacity 0.5s ease-out;
+        }
+
+        #launch-button {
+            padding: 20px 60px;
+            font-family: 'Teko', sans-serif;
+            font-weight: 700;
+            font-size: clamp(1.5rem, 4vw, 2.2rem);
+            color: #fff;
+            background-color: #005c9e;
+            border: 2px solid #3399ff;
+            border-radius: 5px;
+            cursor: pointer;
+            z-index: 10;
+            letter-spacing: 2px;
+            transition: background-color 0.3s, transform 0.3s, opacity 0.5s ease-out;
+        }
+        #launch-button:hover {
+            background-color: #0070c4;
+            transform: scale(1.05);
+        }
+        #launch-button.clicked {
+            opacity: 0;
+            transform: scale(0.9);
+            pointer-events: none;
+        }
+
+        #countdown {
+            position: absolute;
+            top: 50%; left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: clamp(10rem, 30vw, 15rem);
+            color: #f39c12;
+            font-family: 'Roboto Mono', monospace;
+            opacity: 0;
+            z-index: 20;
+            text-shadow: 0 0 20px rgba(243, 156, 18, 0.7);
+        }
+        #countdown.show { animation: countdown-zoom 1s forwards; }
+
+        /* --- Tela 2: Inscrições Abertas --- */
+        #open-screen {
+             background: transparent; /* Fundo transparente para ver as estrelas */
+             opacity: 0;
+             transition: opacity 0.8s ease-in 0.8s; /* TEMPO DE TRANSIÇÃO REDUZIDO */
+        }
+        #open-screen.visible {
+            opacity: 1;
+        }
+
+        #open-screen .status-panel p {
+            width: 0; /* Reset para a animação */
+        }
+        
+        #open-screen.visible .status-panel p {
+            animation: typing 1.5s steps(40, end) forwards;
+        }
+
+        #open-screen.visible .status-panel p:nth-child(2) {
+            animation-delay: 0.8s;
+        }
+        #open-screen.visible .status-panel p:nth-child(3) {
+            animation-delay: 1.6s;
+        }
+
+        .logo-final {
+            width: 250px;
+            height: 250px;
+            border-radius: 50%;
+            margin-bottom: 20px;
+        }
+
+        #open-screen h1 {
+            font-family: 'Teko', sans-serif;
+            font-size: clamp(3.5rem, 12vw, 6rem); /* Tamanho aumentado */
+            color: #ffffff; /* COR DO TEXTO MUDADA PARA BRANCO */
+            text-align: center;
+            letter-spacing: 3px;
+            /* Efeito de brilho "Neon" mais suave com o brilho laranja mantido */
+            text-shadow: 
+                0 0 8px rgba(255, 255, 255, 0.8), /* Brilho branco interno */
+                0 0 12px rgba(243, 156, 18, 0.6), /* Brilho laranja externo */
+                0 0 32px rgba(243, 156, 18, 0.4);
+        }
+
+        .logo-final.animate, #open-screen h1.animate {
+            animation-duration: 1.2s; /* Duração da animação reduzida */
+            animation-fill-mode: both;
+            animation-timing-function: cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        }
+
+        .logo-final.animate {
+            animation-name: materialize;
+            animation-delay: 0.8s; /* Atraso ajustado */
+        }
+        
+        #open-screen h1.animate {
+            animation-name: materialize;
+            animation-delay: 1.1s; /* Atraso ajustado */
+        }
+        
+        @keyframes scanline { 0% { background-position: 0 0; } 100% { background-position: 0 100vh; } }
+        @keyframes typing { from { width: 0; } to { width: 100%; } }
+        @keyframes countdown-zoom { from { opacity: 1; transform: translate(-50%, -50%) scale(0.5); } to { opacity: 0; transform: translate(-50%, -50%) scale(1.5); } }
+        
+        @keyframes materialize {
+            from {
+                opacity: 0;
+                transform: scale(0.3) translateY(50px);
+                filter: brightness(3) blur(5px);
+            }
+            to {
+                opacity: 1;
+                transform: scale(1) translateY(0);
+                filter: brightness(1) blur(0);
+            }
+        }
+
+    </style>
+</head>
+<body>
+    
+    <div id="stars-container">
+        <div id="stars" class="stars"></div>
+        <div id="stars2" class="stars"></div>
+        <div id="stars3" class="stars"></div>
+    </div>
+
+    <section id="launch-screen" class="screen">
+        <div class="hud-overlay">
+            <div class="hud-corner top-left"></div>
+            <div class="hud-corner top-right"></div>
+            <div class="hud-corner bottom-left"></div>
+            <div class="hud-corner bottom-right"></div>
+        </div>
+        <div class="status-panel">
+            <p>> ALVO: WORCAP 25 ANOS</p>
+            <p>> TELEMETRIA: ONLINE</p>
+            <p>> STATUS DO SISTEMA: <span class="status-ok">PRONTO</span></p>
+        </div>
+        
+        <img src="logo01.jpg" alt="Logo Worcap" class="logo-main" onerror="this.onerror=null;this.src='https://placehold.co/600x200/png?text=WORCAP';">
+        
+        <div id="countdown"></div>
+        <button id="launch-button">INICIAR LANÇAMENTO</button>
+    </section>
+
+    <section id="open-screen" class="screen hidden">
+        <div class="hud-overlay">
+            <div class="hud-corner top-left"></div>
+            <div class="hud-corner top-right"></div>
+            <div class="hud-corner bottom-left"></div>
+            <div class="hud-corner bottom-right"></div>
+        </div>
+        <div class="status-panel">
+            <p>> DESTINO: ALCANÇADO</p>
+            <p>> SINAL: ESTÁVEL</p>
+            <p>> STATUS: <span class="status-ok">INSCRIÇÕES ABERTAS</span></p>
+        </div>
+        <img src="logo02.jpg" alt="Logo Worcap 25 Anos" class="logo-final" onerror="this.onerror=null;this.src='https://placehold.co/250x250/png?text=WORCAP+25';">
+        <h1>INSCRIÇÕES ABERTAS</h1>
+    </section>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const launchButton = document.getElementById('launch-button');
+            const launchScreen = document.getElementById('launch-screen');
+            const openScreen = document.getElementById('open-screen');
+            const countdownElement = document.getElementById('countdown');
+            const hudOverlay = document.querySelectorAll('.hud-overlay');
+            const statusPanel = document.querySelectorAll('.status-panel');
+            const logoMain = document.querySelector('.logo-main');
+            const starsContainer = document.getElementById('stars-container');
+            const finalLogo = document.querySelector('.logo-final');
+            const finalH1 = document.querySelector('#open-screen h1');
+
+            launchButton.addEventListener('click', () => {
+                // 1. Esconde os elementos da primeira tela
+                launchButton.classList.add('clicked');
+                hudOverlay[0].style.opacity = '0';
+                statusPanel[0].style.opacity = '0';
+                logoMain.style.opacity = '0';
+
+                // 2. Inicia a contagem regressiva
+                let count = 3;
+                const startCountdown = () => {
+                    if (count > 0) {
+                        countdownElement.textContent = count;
+                        countdownElement.classList.remove('show');
+                        void countdownElement.offsetWidth; 
+                        countdownElement.classList.add('show');
+                        count--;
+                        setTimeout(startCountdown, 1000); // Contagem de 1 segundo
+                    } else {
+                        countdownElement.textContent = '';
+                        countdownElement.classList.remove('show');
+                        // 3. Transição para a tela final com efeitos
+                        transitionToFinalScreen();
+                    }
+                };
+
+                // Inicia a contagem após um pequeno delay para os elementos desaparecerem
+                setTimeout(startCountdown, 250); // TEMPO REDUZIDO
+            });
+
+            function transitionToFinalScreen() {
+                // Ativa o efeito de hyperspace
+                starsContainer.classList.add('hyperspace');
+
+                // Esconde a primeira tela e mostra a segunda
+                setTimeout(() => {
+                    launchScreen.classList.add('hidden');
+                    openScreen.classList.remove('hidden');
+                    openScreen.classList.add('visible');
+
+                    // Ativa as animações 'materialize'
+                    finalLogo.classList.add('animate');
+                    finalH1.classList.add('animate');
+
+                    // Após a transição, reverte o efeito de hyperspace para a segunda tela
+                    setTimeout(() => {
+                        starsContainer.classList.remove('hyperspace');
+                    }, 400); // TEMPO REDUZIDO
+
+                }, 600); // TEMPO REDUZIDO (Ocorre no meio do salto para o hyperspace)
+            }
+        });
+    </script>
+</body>
+</html>
+
